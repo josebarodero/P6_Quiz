@@ -9,7 +9,7 @@ const Sequelize = require('sequelize');
 // To use  Heroku Postgres data base:
 //    DATABASE_URL = postgres://user:passwd@host:port/database
 
-const url = process.env.DATABASE_URL || "sqlite:quiz.sqlite";
+const url = process.env.DATABASE_URL || "sqlite:quizzes.sqlite";
 
 const sequelize = new Sequelize(url);
 
@@ -21,10 +21,10 @@ sequelize.import(path.join(__dirname,'session'));
 
 // Create tables
 sequelize.sync()
-.then(() => console.log('Data Bases created successfully'))
+    .then(() => console.log('Data Bases created successfully'))
 .catch(error => {
     console.log("Error creating the data base tables:", error);
-    process.exit(1);
+process.exit(1);
 });
 
 
